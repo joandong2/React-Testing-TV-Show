@@ -709,16 +709,13 @@ const show = {
 
 test("App fetches show data and renders it", async () => {
     mockFetchShow.mockResolvedValueOnce(show);
-    const { queryAllByText, getByText, getAllByText } = render(<App />);
+    const { getAllByText, queryAllByText, getByText } = render(<App />);
     expect(queryAllByText(/fetching data/i)).toHaveLength(1);
 
     await wait();
 
     expect(queryAllByText(/love letter/i)).toHaveLength(1);
-
     getByText(/select a season/i);
-    expect(queryAllByText(/episode/i)).toHaveLength(0);
-
     fireEvent.mouseDown(getByText(/select a season/i));
     expect(getAllByText(/season/i)).toHaveLength(5);
 });
