@@ -715,8 +715,8 @@ test("App fetches show data and renders it", async () => {
     await wait();
 
     expect(queryAllByText(/love letter/i)).toHaveLength(1);
-    getByText(/select a season/i);
-    fireEvent.mouseDown(getByText(/select a season/i));
+    let dropdown = getByText(/select a season/i);
+    fireEvent.mouseDown(dropdown);
     expect(getAllByText(/season/i)).toHaveLength(5);
 });
 
